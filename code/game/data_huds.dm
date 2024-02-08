@@ -231,19 +231,18 @@ Medical HUD! Basic mode needs suit sensors on.
 				holder.icon_state = "hudbuff"
 			if(null)
 				holder.icon_state = "hudhealthy"
-//wound hud
-	else
-		for(var/datum/wound/wound as anything in holder.all_wounds)
-			switch(wound.severity)
-				if(WOUND_SEVERITY_CRITICAL)
-					holder.icon_state = "hudcriticalwound"
-					break
-				if(WOUND_SEVERITY_SEVERE)
-					holder.icon_state = "hudseverewound"
-					break
-				if(WOUND_SEVERITY_MODERATE)
-					holder.icon_state = "hudmoderatewound"
-					break
+// Wound huds
+		var/highest_severity_found = FALSE
+		for (var/datum/wound/wound in all_wounds)
+			if (wound.severity == WOUND_SEVERITY_CRITICAL)
+				holder.icon_state = "hudcriticalwound"
+				highest_severity_found = TRUE
+			else if (wound.severity == WOUND_SEVERITY_SEVERE && !highest_severity_found)
+				holder.icon_state = "hudseverewound"
+				highest_severity_found = TRUE
+			else if (wound.severity == WOUND_SEVERITY_MODERATE && !highest_severity_found)
+				holder.icon_state = "hudmoderatewound"
+				highest_severity_found = TRUE
 
 /***********************************************
 FAN HUDs! For identifying other fans on-sight.

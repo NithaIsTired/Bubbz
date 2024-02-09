@@ -195,7 +195,7 @@ Medical HUD! Basic mode needs suit sensors on.
 		holder.icon_state = "huddead"
 	else
 		holder.icon_state = "hudhealthy"
-
+/* Moved to zubbers
 /mob/living/carbon/med_hud_set_status()
 	var/image/holder = hud_list?[STATUS_HUD]
 	if (isnull(holder))
@@ -230,19 +230,7 @@ Medical HUD! Basic mode needs suit sensors on.
 			if(DISEASE_SEVERITY_POSITIVE)
 				holder.icon_state = "hudbuff"
 			if(null)
-				holder.icon_state = "hudhealthy"
-// Wound huds
-		var/highest_severity_found = FALSE
-		for (var/datum/wound/wound in all_wounds)
-			if (wound.severity == WOUND_SEVERITY_CRITICAL)
-				holder.icon_state = "hudcriticalwound"
-				highest_severity_found = TRUE
-			else if (wound.severity == WOUND_SEVERITY_SEVERE && !highest_severity_found)
-				holder.icon_state = "hudseverewound"
-				highest_severity_found = TRUE
-			else if (wound.severity == WOUND_SEVERITY_MODERATE && !highest_severity_found)
-				holder.icon_state = "hudmoderatewound"
-				highest_severity_found = TRUE
+				holder.icon_state = "hudhealthy" */
 
 /***********************************************
 FAN HUDs! For identifying other fans on-sight.

@@ -42,7 +42,6 @@
 		if(virus_threat && flickering_virus_hud)
 			return
 		var/highest_severity_found = FALSE
-		var/previous_virus_icon_state = holder.icon_state
 		for (var/datum/wound/wound in all_wounds)
 			if (wound.severity == WOUND_SEVERITY_CRITICAL)
 				holder.icon_state = "hudcriticalwound"
